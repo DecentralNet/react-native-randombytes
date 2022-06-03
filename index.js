@@ -12,11 +12,13 @@ function toBuffer (nativeStr) {
 }
 
 function init () {
-  if (RNRandomBytes.seed) {
-    let seedBuffer = toBuffer(RNRandomBytes.seed)
-    addEntropy(seedBuffer)
-  } else {
-    seedSJCL()
+  if (RNRandomBytes) {
+    if (RNRandomBytes.seed) {
+      let seedBuffer = toBuffer(RNRandomBytes.seed)
+      addEntropy(seedBuffer)
+    } else {
+      seedSJCL()
+    }
   }
 }
 
@@ -45,7 +47,7 @@ export function randomBytes (length, cb) {
     return new Buffer(hexString, 'hex')
   }
 
-  RNRandomBytes.randomBytes(length, function(err, base64String) {
+  RNRandomBytes?.randomBytes(length, function(err, base64String) {
     if (err) {
       cb(err)
     } else {
