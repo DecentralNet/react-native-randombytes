@@ -47,7 +47,7 @@ export function randomBytes (length, cb) {
     return new Buffer(hexString, 'hex')
   }
 
-  RNRandomBytes?.randomBytes(length, function(err, base64String) {
+  RNRandomBytes.randomBytes(length, function(err, base64String) {
     if (err) {
       cb(err)
     } else {
